@@ -10,16 +10,19 @@ const app = document.getElementById('app');
 
 app.innerHTML = `
   ${renderNavbar()}
-  <div class="gradient-bg">
+  <div class="gradient-bg-top">
     ${renderHero()}
     ${renderAbout()}
   </div>
-  ${renderMission()}
-  ${renderOfferings()}
-  ${renderContact()}
-  ${renderFooter()}
-`;
 
+  ${renderMission()}
+
+  <div class="gradient-bg-bottom">
+    ${renderOfferings()}
+    ${renderContact()}
+    ${renderFooter()}
+  </div>
+`;
 
 // Add scroll shadow to navbar
 window.addEventListener("scroll", () => {
@@ -49,4 +52,26 @@ const appearOnScroll = new IntersectionObserver((entries, observer) => {
 
 faders.forEach(fader => {
   appearOnScroll.observe(fader);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.offering-card');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !entry.target.classList.contains('appear')) {
+          const index = [...cards].indexOf(entry.target);
+          entry.target.style.transitionDelay = `${index * 100}ms`;
+          entry.target.classList.add('appear');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+    }
+  );
+
+  cards.forEach((card) => observer.observe(card));
 });

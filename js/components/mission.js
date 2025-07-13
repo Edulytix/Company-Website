@@ -1,6 +1,6 @@
 export function renderMission() {
   return `
-    <section id="mission" class="mission">
+    <section id="mission" class="mission fade-in-section">
       <div class="container">
         <h2>Our Vision</h2>
         <p class="mission-text">
