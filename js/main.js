@@ -74,4 +74,26 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 
   cards.forEach((card) => observer.observe(card));
+
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-tab');
+
+      // Remove 'active' from all buttons
+      tabButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Show only the matching tab-content
+      tabContents.forEach(content => {
+        if (content.id === target) {
+          content.classList.add('active-tab');
+        } else {
+          content.classList.remove('active-tab');
+        }
+      });
+    });
+  });
 });
