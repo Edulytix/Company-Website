@@ -1,56 +1,47 @@
-const counsellingServices = [
-  { 
-    title: "VEDA", 
+const products = [
+  {
+    title: "VEDA",
     description: "A holistic student counselling system with stages like VEDA Scorecard, Employment KPI, and Career Metrics — guiding you from ambition to achievement.",
     link: "veda.html"
-  },
-  { 
-    title: "GyanSetu", 
-    description: "A lifelong learning companion offering access to the latest internship & job insights across countries and fields — even post-admission." 
-  },
-  { 
-    title: "IAAS", 
-    description: "“Intelligence As A Service” — a smart analytics layer that powers personalised recommendations for better university, visa, and job decisions." 
-  },
+  }
 ];
 
-const testPrepServices = [
-  { 
-    title: "Test Guidance", 
-    description: "Expert guidance on test preparation strategies, resources, and timelines to help you excel." 
+const services = [
+  {
+    title: "Test Guidance",
+    description: "Expert guidance on test preparation strategies, resources, and timelines to help you excel."
   },
-  { 
-    title: "Profile Building", 
-    description: "Assistance in building a strong academic and extracurricular profile to enhance your university applications." 
+  {
+    title: "Profile Building",
+    description: "Assistance in building a strong academic and extracurricular profile to enhance your university applications."
   },
-];
-
-const valueAddedServices = [
-  { 
-    title: "Admission Platforms", 
-    description: "Explore options through platforms like VidyaSetu, ShikshaDwar, Admisio, Univera, GradReach and more — built for streamlined global applications." 
+  {
+    title: "Admission Platforms",
+    description: "Explore options through platforms like VidyaSetu, ShikshaDwar, Admisio, Univera, GradReach and more — built for streamlined global applications."
   },
-  { 
-    title: "Loan Assistance", 
-    description: "Partnering with DhanSetu, QuickCred, EduFundz, LoanLeap & more — we help you unlock funding with speed, clarity, and confidence." 
-  },
+  {
+    title: "Loan Assistance",
+    description: "Partnering with DhanSetu, QuickCred, EduFundz, LoanLeap & more — we help you unlock funding with speed, clarity, and confidence."
+  }
 ];
 
 export function renderOfferings() {
-  setTimeout(() => attachTabListeners(), 0); // Important to wait until DOM is rendered
+  setTimeout(() => attachTabListeners(), 0);
 
   return `
     <section id="offerings" class="offerings-section">
       <div class="container">
-        <h2 class="section-heading">Our Services</h2>
+        <h2 class="section-heading">Our Offerings</h2>
         <div class="tabs">
-          <button class="tab-button active" data-tab="counselling">Counselling Services</button>
-          <button class="tab-button" data-tab="testprep">Test Prep</button>
-          <button class="tab-button" data-tab="valueadded">Value Added Services</button>
+          <button class="tab-button active" data-tab="products">Products</button>
+          <button class="tab-button" data-tab="services">Services</button>
         </div>
-        ${generateTabContent("counselling", counsellingServices)}
-        ${generateTabContent("testprep", testPrepServices)}
-        ${generateTabContent("valueadded", valueAddedServices)}
+        <div id="products" class="tab-content active-tab">
+          ${products.map(generateCard).join("")}
+        </div>
+        <div id="services" class="tab-content">
+          ${services.map(generateCard).join("")}
+        </div>
       </div>
     </section>
   `;
@@ -93,3 +84,28 @@ function generateTabContent(tabId, services) {
     </div>
   `;
 }
+
+// Tab interactivity
+document.querySelectorAll('.tab-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const target = button.getAttribute('data-tab');
+
+    // Toggle tab content
+    document.querySelectorAll('.tab-content').forEach(tab => {
+      tab.classList.remove('active-tab');
+    });
+    document.getElementById(target).classList.add('active-tab');
+
+    // Toggle tab button highlight
+    document.querySelectorAll('.tab-button').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    button.classList.add('active');
+  });
+});
+
+// Default tab set to Products
+document.addEventListener('DOMContentLoaded', () => {
+  const defaultTab = document.querySelector('.tab-button[data-tab="products-tab"]');
+  if (defaultTab) defaultTab.click();
+});

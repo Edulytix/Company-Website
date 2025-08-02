@@ -60,33 +60,12 @@ export function renderVeda() {
         </div>
       </div>
     </section>
+
+    <div id="imageModal" class="image-modal hidden">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <img id="modalImage" src="" alt="Enlarged View" />
+      </div>
+    </div>
   `;
-}
-
-function initializeCarousel() {
-  const track = document.getElementById("carouselTrack");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  let currentSlide = 0;
-  const totalSlides = 12;
-
-  function updateCarousel() {
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
-  }
-
-  prevBtn.addEventListener("click", () => {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    updateCarousel();
-  });
-
-  nextBtn.addEventListener("click", () => {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateCarousel();
-  });
-
-  // Auto-scroll
-  setInterval(() => {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateCarousel();
-  }, 8000);
 }

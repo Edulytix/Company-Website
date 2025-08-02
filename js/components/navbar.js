@@ -10,11 +10,9 @@ export function renderNavbar() {
           <li><a href="index.html#about">About</a></li>
 
           <li class="dropdown">
-            <a href="#offerings" class="dropdown-toggle">Our Offerings</a>
+            <a href="#" class="dropdown-toggle">Our Offerings</a>
             <ul class="dropdown-menu">
               <li><a href="veda.html">VEDA</a></li>
-              <li><a href="#">GyanSetu</a></li>
-              <li><a href="#">IAAS</a></li>
               <li><a href="#">Admission Platforms</a></li>
               <li><a href="#">Loan Assistance</a></li>
             </ul>
