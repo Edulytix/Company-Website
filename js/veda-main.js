@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// === Carousel Logic ===
+/* === Carousel Logic ===
 function initializeCarousel() {
   const track = document.getElementById("carouselTrack");
   const prevBtn = document.getElementById("prevBtn");
@@ -93,3 +93,4 @@ function initializeImageModal() {
     }
   });
 }
+*/

@@ -40,6 +40,10 @@ export function renderVeda() {
         </ul>
       </div>
     </section>
+  `;
+}
+
+/* Carousel Section
 
     <section class="veda-carousel-section fade-in-section section-visible">
       <div class="container">
@@ -67,5 +71,4 @@ export function renderVeda() {
         <img id="modalImage" src="" alt="Enlarged View" />
       </div>
     </div>
-  `;
-}
+*/
